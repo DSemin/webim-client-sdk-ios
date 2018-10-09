@@ -51,7 +51,7 @@ extension Int {
         }
         
         valuePointer.deinitialize()
-        valuePointer.deallocate(capacity: 1)
+        valuePointer.deallocate()
         
         return bytes
     }

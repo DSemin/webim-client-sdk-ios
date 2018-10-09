@@ -493,29 +493,6 @@ final class SQLiteHistoryStorage: HistoryStorage {
         }
     }
     
-    private func createIndex() {
-        do {
-            /*
-             CREATE UNIQUE INDEX index_history_on_timestamp_in_microsecond
-             ON history (time_since_in_microsecond)
-             */
-            _ = try db?.run(SQLiteHistoryStorage
-                .history
-                .createIndex(SQLiteHistoryStorage.timestamp,
-                             unique: true))
-        } catch {
-            WebimInternalLogger.shared.log(entry: error.localizedDescription,
-                                           verbosityLevel: .VERBOSE)
-        }
-        
-        db?.trace {
-            WebimInternalLogger.shared.log(entry: "\($0)",
-                verbosityLevel: .DEBUG)
-        }
-        
-        createIndex()
-    }
-    
     private func prepare() {
         if !prepared {
             prepared = true
