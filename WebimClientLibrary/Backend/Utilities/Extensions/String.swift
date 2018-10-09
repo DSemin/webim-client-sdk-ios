@@ -302,7 +302,7 @@ public final class SHA256 {
             SHA256.k.count)
         defer {
             M.deinitialize(count: SHA256.k.count)
-            M.deallocate()
+            M.deallocate(capacity: SHA256.k.count)
         }
         
         for x in 0 ..< SHA256.k.count {
